@@ -12,3 +12,4 @@ fi
 echo $DESCRIPTION
 
 echo ::set-output name=is_merged::$STATE
+exit $STATE
