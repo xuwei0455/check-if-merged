@@ -11,6 +11,8 @@ LABEL repository="http://github.com/marcocarvalho/check_if_merged"
 LABEL homepage="http://github.com/marcocarvalho/check_if_merged"
 LABEL maintainer="Abi Noda <marco.carvalho.swasthya@gmail.com>"
 
+RUN apt-get update; apt-get install -y git
+
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]

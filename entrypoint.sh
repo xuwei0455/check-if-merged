@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 cd ${GITHUB_WORKSPACE}
 MERGE_BASE=$(git merge-base remotes/origin/$1 remotes/origin/${GITHUB_REF##*/})
