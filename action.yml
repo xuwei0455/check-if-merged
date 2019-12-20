@@ -1,0 +1,16 @@
+# action.yml
+name: 'Check if merged'
+description: 'Check if branch is merged to another one'
+inputs:
+  destination_branch:  # id of input
+    description: 'destination branch'
+    required: true
+    default: 'staging'
+outputs:
+  is_merged: # id of output
+    description: '0 - merged | 100 not merged'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.destination_branch }}
