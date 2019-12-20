@@ -1,6 +1,10 @@
 # action.yml
 name: 'Check if merged'
 description: 'Check if branch is merged to another one'
+author: Marco Carvalho
+branding:
+  icon: git-merge
+  color: purple
 inputs:
   destination_branch:  # id of input
     description: 'destination branch'
