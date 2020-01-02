@@ -19,5 +19,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - uses: marcocarvalho/check_if_merged
+    - uses: CareMessagePlatform/check_if_merged
 ```
