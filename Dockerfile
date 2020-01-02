@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM debian:9.6-slim
+FROM debian:10.2-slim
 
 LABEL "com.github.actions.name"="Check if a branch is merged to another"
 LABEL "com.github.actions.description"="Check if a branch is merged to another"
