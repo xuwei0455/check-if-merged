@@ -1,6 +1,10 @@
 # check_if_merged
 
+
+
 ## Uses:
+
+create at your repo root path: .github/workflows/check_if_merged.yml with:
 
 ```
 on:
