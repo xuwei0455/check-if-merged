@@ -1,17 +1,32 @@
 #!/bin/bash
 
 cd ${GITHUB_WORKSPACE}
-REF="remotes/origin/${GITHUB_REF#refs/heads/}"
+BRANCH="${2:-${GITHUB_REF#refs/heads/}}"
 
-MERGE_BASE=$(git merge-base remotes/origin/$1 $REF)
+git checkout $BRANCH
+git checkout $1
+
+if [[ "$INPUT_TEST_RUN" =  "true" ]]
+then
+  GITHUB_SHA=$(git rev-parse $BRANCH)
+fi
+
+echo git merge-base $1 $BRANCH
+MERGE_BASE=$(git merge-base $1 $BRANCH)
+
 if [[ $MERGE_BASE = $GITHUB_SHA ]]; then
-  export DESCRIPTION="$REF is merged into staging";
+  export DESCRIPTION="$BRANCH is merged into $1 ($INPUT_TEST_RUN)";
   export STATE=0;
 else
-  export DESCRIPTION="$REF is not merged into staging";
+  export DESCRIPTION="$BRANCH is not merged into $1 ($INPUT_TEST_RUN)";
   export STATE=100;
 fi
-echo $DESCRIPTION
+
+echo "$DESCRIPTION STATE: $STATE (TEST RUN: $INPUT_TEST_RUN)"
 
 echo ::set-output name=is_merged::$STATE
-exit $STATE
+
+if [[ $INPUT_TEST_RUN != "true" ]]
+then
+  exit $STATE
+fi

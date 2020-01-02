@@ -10,6 +10,13 @@ inputs:
     description: 'destination branch'
     required: true
     default: 'staging'
+  source_branch:
+    description:  'source branch to check or GITHUB_REF will be used'
+    required: false
+  test_run:
+    description: 'do not use exit code if test run'
+    required: false
+    default: 'false'
 outputs:
   is_merged: # id of output
     description: '0 - merged | 100 not merged'
@@ -18,3 +25,4 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.destination_branch }}
+    - ${{ inputs.source_branch }}
