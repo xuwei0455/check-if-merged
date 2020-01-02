@@ -1,12 +1,14 @@
 #!/bin/bash
 
 cd ${GITHUB_WORKSPACE}
-MERGE_BASE=$(git merge-base remotes/origin/$1 remotes/origin/${GITHUB_REF##*/})
+REF="remotes/origin/${GITHUB_REF#refs/heads/}"
+
+MERGE_BASE=$(git merge-base remotes/origin/$1 $REF)
 if [[ $MERGE_BASE = $GITHUB_SHA ]]; then
-  export DESCRIPTION="$GITHUB_REF is merged into staging";
+  export DESCRIPTION="$REF is merged into staging";
   export STATE=0;
 else
-  export DESCRIPTION="$GITHUB_REF is not merged into staging";
+  export DESCRIPTION="$REF is not merged into staging";
   export STATE=100;
 fi
 echo $DESCRIPTION
