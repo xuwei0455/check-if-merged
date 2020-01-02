@@ -14,6 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1`
-    - uses: actions/check_if_merged
+    - uses: actions/checkout@v1
+    - uses: marccocarvalho/check_if_merged
 ```
