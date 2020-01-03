@@ -1,12 +1,11 @@
-# check_if_merged
-
-
+# check-if-merged GH Action
 
 ## Uses:
 
 create at your repo root path: .github/workflows/check_if_merged.yml with:
 
 ```
+name: Check if branch is merged to staging
 on:
   push:
     branches-ignore:
@@ -14,10 +13,8 @@ on:
       - 'staging'
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
-    - uses: CareMessagePlatform/check_if_merged
+    - uses: CareMessagePlatform/check-if-merged@v1
 ```

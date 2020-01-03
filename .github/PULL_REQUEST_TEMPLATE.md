@@ -6,9 +6,8 @@
 
 **Notes**: Additional notes that should be taken in account. e.g. *All projects must have the pull request template.*
 
-DELETE ONE OF THESE TASK LISTS
 **SIMPLE PR TASKS**
 - [ ] Pick at least one reviewer
-- [x] Merge to *Staging*: See [test, It trys to merge to staging and see if the action works](https://github.com/CareMessagePlatform/check_if_merged/blob/master/.github/workflows/check_if_merged.yml)
+- [x] Merge to *Staging*: See [test, It trys to merge to staging and see if the action works](https://github.com/CareMessagePlatform/check-if-merged/blob/master/.github/workflows/check_if_merged.yml)
 - [ ] Add necessary tags(QA, CI, Code Review, Code analysis, Code Coverage)
 - [ ] Move JIRA story into Ready-for-QA
