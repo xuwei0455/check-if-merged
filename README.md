@@ -12,7 +12,7 @@ on:
       - 'master'
       - 'staging'
 jobs:
-  build:
+  check-if-merged:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
