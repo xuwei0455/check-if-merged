@@ -9,10 +9,11 @@ inputs:
   destination_branch:  # id of input
     description: 'destination branch'
     required: true
-    default: 'staging'
-  source_branch:
+    default: 'origin/staging'
+  source_ref:
     description:  'source branch to check or GITHUB_REF will be used'
-    required: false
+    required: true
+    default: ${{ github.ref }} # format: refs/heads/branch/name
   test_run:
     description: 'do not use exit code if test run'
     required: false
@@ -23,6 +24,3 @@ outputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.destination_branch }}
-    - ${{ inputs.source_branch }}

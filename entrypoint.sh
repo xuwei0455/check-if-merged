@@ -1,28 +1,21 @@
 #!/bin/bash
 
 cd ${GITHUB_WORKSPACE}
-BRANCH="${2:-${GITHUB_REF#refs/heads/}}"
 
-git checkout $BRANCH
-git checkout $1
+SHA=$(git show-ref --hash $INPUT_SOURCE_REF)
 
-if [[ "$INPUT_TEST_RUN" =  "true" ]]
-then
-  GITHUB_SHA=$(git rev-parse $BRANCH)
-fi
+echo git merge-base $INPUT_DESTINATION_BRANCH $SHA
+MERGE_BASE=$(git merge-base $INPUT_DESTINATION_BRANCH $SHA)
 
-echo git merge-base $1 $BRANCH
-MERGE_BASE=$(git merge-base $1 $BRANCH)
-
-if [[ $MERGE_BASE = $GITHUB_SHA ]]; then
-  export DESCRIPTION="$BRANCH is merged into $1 ($INPUT_TEST_RUN)";
-  export STATE=0;
+if [[ $MERGE_BASE = $SHA ]]; then
+  VERB="is";
+  STATE=0;
 else
-  export DESCRIPTION="$BRANCH is not merged into $1 ($INPUT_TEST_RUN)";
+  VERB="is not";
   export STATE=100;
 fi
 
-echo "$DESCRIPTION STATE: $STATE (TEST RUN: $INPUT_TEST_RUN)"
+echo "$INPUT_SOURCE_REF ($SHA) $VERB merged into $INPUT_DESTINATION_BRANCH || STATE: $STATE TEST_RUN: $INPUT_TEST_RUN"
 
 echo ::set-output name=is_merged::$STATE
 

@@ -32,7 +32,8 @@ jobs:
       id: first_run
       with:
         test_run: 'true'
-        source_branch: other_branch
+        destination_branch: staging
+        source_ref: refs/heads/other_branch
       uses: ./
     - name: "test if other_branch IS NOT MERGED into staging. If not: merge it to staging"
       run: |
@@ -51,7 +52,8 @@ jobs:
       uses: ./
       with:
         test_run: 'true'
-        source_branch: 'other_branch'
+        destination_branch: staging
+        source_ref: refs/heads/other_branch
     - name: "test if other_branch IS MERGED into staging"
       run: |
         if [[ ${{ steps.second_run.outputs.is_merged }} != "0" ]]
