@@ -1,0 +1,15 @@
+version: 2
+updates:
+- package-ecosystem: docker
+  directory: "/"
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 2
+  target-branch: master
+  reviewers:
+  - marcocarvalho
+  assignees:
+  - marcocarvalho
+  labels:
+  - dependencies
+  - dependabot
