@@ -1,0 +1,15 @@
+QA Needed:
+  - action.yml
+  - entrypoint.sh
+Waiting for code review:
+  - action.yml
+  - entrypoint.sh
+Waiting for CI to pass:
+  - action.yml
+  - entrypoint.sh
+Waiting for Code Climate to pass:
+  - action.yml
+  - entrypoint.sh
+Waiting for Code Coverage to pass:
+  - action.yml
+  - entrypoint.sh
