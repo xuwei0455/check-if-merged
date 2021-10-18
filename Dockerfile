@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM debian:11.0-slim
+FROM debian:11.1-slim
 
 RUN apt-get update; apt-get install -y git
 
