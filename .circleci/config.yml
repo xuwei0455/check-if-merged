@@ -1,0 +1,54 @@
+version: 2
+jobs:
+  prepare:
+    working_directory: ~/repo
+    docker:
+      - image: cimg/node:17.3.1
+        auth:
+          username: caremessagehub
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: node-dependencies-{{ checksum "yarn.lock" }}
+
+      - run: yarn install
+
+      - save_cache:
+          key: node-dependencies-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+            - ~/.cache
+
+  setup_and_test:
+    working_directory: ~/repo
+    docker:
+      - image: cimg/node:17.3.1
+        auth:
+          username: caremessagehub
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          COVERAGE: true
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: node-dependencies-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Run Unit Tests
+          command: yarn test
+
+workflows:
+  version: 2
+  prepare_setup_and_test:
+    jobs:
+      - prepare:
+          context:
+            - docker-credential
+      - setup_and_test:
+          context:
+            - docker-credential
+          requires:
+            - prepare

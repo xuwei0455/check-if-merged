@@ -6,16 +6,14 @@ branding:
   icon: git-merge
   color: purple
 inputs:
-  destination_branch:  # id of input
+  destination_branch:
     description: 'destination branch'
     required: true
     default: 'staging'
-  source_branch:
-    description:  'source branch to check or GITHUB_REF will be used'
-    required: false
-outputs:
-  is_merged: # id of output
-    description: '0 - merged | 100 not merged'
+  github_token:
+    description: default token to use
+    required: true
+    default: ${{ github.token }}
 runs:
   using: 'node16'
   main: 'dist/index.js'

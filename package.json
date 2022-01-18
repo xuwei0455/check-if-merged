@@ -11,7 +11,7 @@
     "@actions/github": "^5.0.0"
   },
   "scripts": {
-    "build": "ncc build src/index.js -o dist --source-map --license licenses.txt",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider ncc build src/index.js -o dist --source-map --license licenses.txt",
     "test": "jest"
   },
   "devDependencies": {

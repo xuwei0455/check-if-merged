@@ -1,0 +1,16 @@
+name: 'automate test for GH Action'
+
+on:
+  push:
+    branches-ignore:
+      - 'master'
+      - 'staging'
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Dummy test to avoid "waiting build error"
+      run: |
+        exit 0
