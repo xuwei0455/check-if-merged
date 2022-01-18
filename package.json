@@ -1,0 +1,22 @@
+{
+  "name": "check_if_merged",
+  "version": "2.0.0",
+  "description": "Check if merged github action",
+  "main": "index.js",
+  "repository": "git@github.com:CareMessagePlatform/check-if-merged.git",
+  "author": "Marco Carvalho <marco.carvalho.swasthya@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0"
+  },
+  "scripts": {
+    "build": "ncc build src/index.js -o dist --source-map --license licenses.txt",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.33.1",
+    "jest": "^27.4.7",
+    "nock": "^13.2.2"
+  }
+}

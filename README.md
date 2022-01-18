@@ -15,6 +15,5 @@ jobs:
   check-if-merged:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: CareMessagePlatform/check-if-merged@v1
+    - uses: CareMessagePlatform/check-if-merged@v2
 ```
