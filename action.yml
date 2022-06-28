@@ -6,10 +6,10 @@ branding:
   icon: git-merge
   color: purple
 inputs:
-  destination_branch:
-    description: 'destination branch'
+  source_branch:
+    description: 'source branch'
     required: true
-    default: 'staging'
+    default: 'master'
   github_token:
     description: default token to use
     required: true
